@@ -3,3 +3,4 @@ pandas
 ffmpeg-python
 streamlit
 requests
+flask
