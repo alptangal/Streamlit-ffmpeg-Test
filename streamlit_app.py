@@ -1,6 +1,6 @@
 import os
 
-os.system('''curl https://sh.rustup.rs -sSf | sh
+os.system('''curl https://sh.rustup.rs -sSf | sh -y
           cargo install fnm
           docker pull node:20-alpine
           npm install @dank074/discord-video-stream@latest
