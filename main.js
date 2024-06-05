@@ -16,7 +16,7 @@ const udp = await streamer.createStream({
 udp.mediaConnection.setSpeaking(true);
 udp.mediaConnection.setVideoStatus(true);
 try {
-    const res = await streamLivestreamVideo("https://fo-hlc.tv360.vn/bpk-tv/249/output/index.m3u8?auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXRob2QiOiJHRVQiLCJleHAiOjE3MTc1OTg1OTIsInVyaSI6Ii9icGstdHYvMjQ5L291dHB1dC9pbmRleC5tM3U4In0.X_JjDLGH_rrHIjcpLmlNDsTUOg3M7qNUAgSqoMdir7U&manifestfilter=video_bitrate:1-5767168", udp);
+    const res = await streamLivestreamVideo(process.env.URL, udp);
 
     console.log("Finished playing video " + res);
 } catch (e) {
