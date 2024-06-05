@@ -11,7 +11,7 @@ const udp = await streamer.createStream({
    rtcpSenderReportEnabled: true,
     //fps: 720,
     hardwareAcceleratedDecoding: true,
-    fps:24
+    fps:18
 });
 udp.mediaConnection.setSpeaking(true);
 udp.mediaConnection.setVideoStatus(true);
