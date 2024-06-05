@@ -1,6 +1,6 @@
-FROM alpine:3.20
+FROM alpine:3.19
 
-ENV NODE_VERSION 22.2.0
+ENV NODE_VERSION 18.20.3
 
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
@@ -10,7 +10,7 @@ RUN addgroup -g 1000 node \
         curl \
     && ARCH= OPENSSL_ARCH='linux*' && alpineArch="$(apk --print-arch)" \
       && case "${alpineArch##*-}" in \
-        x86_64) ARCH='x64' CHECKSUM="34c57b553f6e7c32927d295acd9d90b21d60a2d41618bab3e495cf0444e276d8" OPENSSL_ARCH=linux-x86_64;; \
+        x86_64) ARCH='x64' CHECKSUM="3cfeaa3805cc424d1be0e281f0161416a99d206dcb589a9ab3647d7a6ab7d5c9" OPENSSL_ARCH=linux-x86_64;; \
         x86) OPENSSL_ARCH=linux-elf;; \
         aarch64) OPENSSL_ARCH=linux-aarch64;; \
         arm*) OPENSSL_ARCH=linux-armv4;; \
@@ -111,40 +111,3 @@ COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 CMD [ "node" ]
-
-ENV PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1 \
-    PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PIP_DEFAULT_TIMEOUT=120 \
-    LC_ALL=C.UTF-8 \
-    LANG=C.UTF-8
-
-# we probably need build tools?
-RUN apt-get update \
-    && apt-get install --yes --no-install-recommends \
-    gcc \
-    g++ \
-    build-essential \
-    python3-dev \
-    curl -fsSL https://fnm.vercel.app/install | bash \
-    fnm use --install-if-missing 20
-
-WORKDIR /app
-COPY requirements.txt requirements.txt
-COPY packages.txt packages.txt
-
-RUN xargs -a packages.txt apt-get install --yes
-
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
-EXPOSE 8501
-
-COPY . .
-
-CMD ["streamlit", "run", "streamlit_app.py"]
-
-# docker build --progress=plain --tag pydub:latest .
-# docker run -ti -p 8501:8501 --rm pydub:latest /bin/bash
-# docker run -ti -p 8501:8501 --rm pydub:latest
-# docker run -ti -p 8501:8501 -v ${pwd}:/app --rm pydub:latest
