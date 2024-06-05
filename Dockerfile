@@ -14,7 +14,9 @@ RUN apt-get update \
     gcc \
     g++ \
     build-essential \
-    python3-dev
+    python3-dev \
+    curl -fsSL https://fnm.vercel.app/install | bash \
+    fnm use --install-if-missing 20
 
 WORKDIR /app
 COPY requirements.txt requirements.txt
