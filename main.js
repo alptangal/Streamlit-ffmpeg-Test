@@ -1,5 +1,5 @@
 import { Client } from "discord.js-selfbot-v13";
-import { Streamer } from '@dank074/discord-video-stream';
+import { Streamer,streamLivestreamVideo } from '@dank074/discord-video-stream';
 
 const streamer = new Streamer(new Client());
 await streamer.client.login(process.env.botToken);
