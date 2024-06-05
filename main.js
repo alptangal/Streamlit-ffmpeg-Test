@@ -16,7 +16,7 @@ const udp = await streamer.createStream({
 udp.mediaConnection.setSpeaking(true);
 udp.mediaConnection.setVideoStatus(true);
 try {
-    const res = await streamLivestreamVideo(process.env.URL, udp);
+    const res = await streamLivestreamVideo(process.env.url, udp);
 
     console.log("Finished playing video " + res);
 } catch (e) {
