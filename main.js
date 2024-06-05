@@ -9,7 +9,7 @@ const udp = await streamer.createStream({
     // stream options here
     //h26xPreset: 'ultrafast',
     rtcpSenderReportEnabled: true,
-    fps: 720,
+    //fps: 720,
     hardwareAcceleratedDecoding: true
 });
 udp.mediaConnection.setSpeaking(true);
