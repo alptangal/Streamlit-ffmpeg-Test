@@ -15,7 +15,7 @@ const udp = await streamer.createStream({
 udp.mediaConnection.setSpeaking(true);
 udp.mediaConnection.setVideoStatus(true);
 try {
-    const res = await streamLivestreamVideo("https://fo-hlc.tv360.vn/bpk-tv/192/output/index.m3u8?auth=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtZXRob2QiOiJHRVQiLCJleHAiOjE3MTc1NzY5MTcsInVyaSI6Ii9icGstdHYvMTkyL291dHB1dC9pbmRleC5tM3U4In0.A9euuf8tZqFGtxdnwqi-k7xDblCbKQLpeGhUoKzn1IA", udp);
+    const res = await streamLivestreamVideo("https://tr-netcdn.tv360.vn/netcdn-live/155/output/index.m3u8?timestamp=1717595742&token=8f98b7016816be8b9c2388c37df59ef8", udp);
 
     console.log("Finished playing video " + res);
 } catch (e) {
