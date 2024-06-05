@@ -2,7 +2,7 @@ import { Client } from "discord.js-selfbot-v13";
 import { Streamer } from '@dank074/discord-video-stream';
 
 const streamer = new Streamer(new Client());
-await streamer.client.login('MTI0Nzc0ODIwMTk5MDA2MjIxNQ.GadVld.qKiqwwZHTT-oMlEaPeTS_C0Gr9zisISVbK14yc');
+await streamer.client.login(process.env.botToken);
 await streamer.joinVoice("1122707918177960047", "1200346808552001538");
 
 const udp = await streamer.createStream({
