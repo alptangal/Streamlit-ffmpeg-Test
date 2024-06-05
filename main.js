@@ -6,7 +6,13 @@ await streamer.client.login(process.env.botToken);
 await streamer.joinVoice("1122707918177960047", "1200346808552001538");
 
 const udp = await streamer.createStream({
-
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "bitrateKbps": 2500,
+    "maxBitrateKbps": 2500,
+    "hardware_acc": false,
+    "videoCodec": "H264"
 });
 udp.mediaConnection.setSpeaking(true);
 udp.mediaConnection.setVideoStatus(true);
