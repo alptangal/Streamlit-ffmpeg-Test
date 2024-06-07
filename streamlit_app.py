@@ -5,6 +5,7 @@ import requests
 
 async def main():
     try:
+        print(11111)
         req=requests.get('http://localhost:8888')
         print(req.status_code)
         sys.exit('Exited')
