@@ -12,5 +12,5 @@ async def main():
         exit()
     except:
         server.b()
-        os.system('ffmpeg -i video1.mp4 -vcodec libx264 -pix_fmt yuv420p -preset medium -r 30 -g 60 -b:v 2500k -acodec libmp3lame -ar 44100 -threads 6 -qscale 3 -b:a 712000 -bufsize 512k -f flv rtmp://iad05.contribute.live-video.net/app/live_592628789_TRD4VwvElUMsxSSauahoWFXVONOTq2')
+        os.system('ffmpeg -re -stream_loop -1 -i video1.mp4 -c:v libx264 -preset veryfast -maxrate 3000k -bufsize 6000k -vf "format=yuv420p" -g 50 -c:a aac -b:a 128k -f flv rtmp://live.twitch.tv/app/live_592628789_TRD4VwvElUMsxSSauahoWFXVONOTq2')
 asyncio.run(main())
